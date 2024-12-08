@@ -1,0 +1,38 @@
+"static library for mysql c++ connector using bazel"
+module(
+    name = "mysql-connector-cpp-bazel",
+    version = "1.0",
+)
+
+###################################################################
+module_dot_bazel_file = """
+module(
+    name = "mysql-connector-cpp"
+)
+"""
+
+build_dot_bazel_file = """
+filegroup(
+    name = "all_srcs",
+    srcs = glob(["**"]),
+    visibility = ["//visibility:public"],
+)
+"""
+###################################################################
+
+bazel_dep(name = "rules_foreign_cc", version = "0.13.0")
+bazel_dep(name = "mysql-connector-cpp", version = "")
+
+archive_override(
+    module_name = "mysql-connector-cpp",
+    integrity = "sha256-ZMf1xxjhTqcIOXfhlStU8iFsb6ajVAhN4+PWf4xbGNA=",
+    strip_prefix = "mysql-connector-cpp-9.1.0",
+    urls = [
+        "https://github.com/mysql/mysql-connector-cpp/archive/refs/tags/9.1.0.tar.gz",
+    ],
+    patch_cmds = [
+        "echo '"+ module_dot_bazel_file +"' > MODULE.bazel",
+        "echo '"+ build_dot_bazel_file +"' > BUILD.bazel",
+        "rm cdk/extra/protobuf/protobuf-3.19.6/BUILD"
+    ],
+)
