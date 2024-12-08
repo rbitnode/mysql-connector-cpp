@@ -1,4 +1,4 @@
-# mysql-connector-cpp-bazel
+# mysql-connector-cpp-bazel (Linux Only)
 
 Bazel port for MySQL C++ connector static library.<br>
 Current mysql connector version: `9.1.0`
@@ -23,6 +23,14 @@ and then you can reference library in deps part of your targets, like below:
 
 cc_binary(
     ...
+    # Static library for mysql-connector-cpp takes OpenSSL from default
+    # packages of linux installation hence below linker flags are preffered.
+    # Support for static OpenSSL link might be added in future. If OpenSSL errors
+    # occurs, you might not have it installed. You can always install it
+    # using "apt install libssl-dev" (or similar for your linux distribution)
+    linkopts = [
+        "-lssl", "-lcrypto", "-lresolv"
+    ],
     deps = [
         # for release builds
         "@mysql-connector-cpp-bazel//:libmysqlcppconn",
