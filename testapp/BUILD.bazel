@@ -2,7 +2,7 @@ cc_binary(
     name = "testapp",
     srcs = ["main.cpp"],
     deps = [
-        "@mysql-connector-cpp-bazel",
+        "//:libmysqlcppconn",
     ],
     linkopts = [
         "-lssl", "-lcrypto", "-lresolv"

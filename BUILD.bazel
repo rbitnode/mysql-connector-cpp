@@ -1,7 +1,7 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 
 cmake(
-    name = "mysql-connector-cpp-bazel_release",
+    name = "libmysqlcppconn",
     cache_entries = {
         "BUILD_STATIC": "ON",
     },
@@ -14,7 +14,7 @@ cmake(
 )
 
 cmake(
-    name = "mysql-connector-cpp-bazel_debug",
+    name = "libmysqlcppconnd",
     cache_entries = {
         "BUILD_STATIC": "ON",
     },
