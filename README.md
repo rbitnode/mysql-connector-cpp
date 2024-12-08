@@ -9,3 +9,5 @@ Currently this module is not part of bazel central registry, use below code in y
 
 ```
 ```
+
+*Note:* Legacy mysql connector is not supported as it will be removed from future releases, This connector only supports MySQL latest [XDev APIs](https://dev.mysql.com/doc/x-devapi-userguide/en/).

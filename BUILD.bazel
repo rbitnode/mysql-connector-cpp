@@ -1,17 +1,27 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 
 cmake(
-    name = "mysql-connector-cpp-bazel",
+    name = "mysql-connector-cpp-bazel_release",
     cache_entries = {
         "BUILD_STATIC": "ON",
     },
     lib_source = "@mysql-connector-cpp//:all_srcs",
-    # out_static_libs = [
-    #     "libmysqlcppconnx-static.a",
-    # ],
-    # out_lib_dir = "lib64",
-    static_libraries = [
+    out_static_libs = [
         "libmysqlcppconnx-static.a",
     ],
+    out_lib_dir = "lib64",
+    visibility = ["//visibility:public"],
+)
+
+cmake(
+    name = "mysql-connector-cpp-bazel_debug",
+    cache_entries = {
+        "BUILD_STATIC": "ON",
+    },
+    lib_source = "@mysql-connector-cpp//:all_srcs",
+    out_static_libs = [
+        "libmysqlcppconnx-static.a",
+    ],
+    out_lib_dir = "lib64/debug",
     visibility = ["//visibility:public"],
 )
