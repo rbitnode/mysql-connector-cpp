@@ -6,9 +6,12 @@ cmake(
         "BUILD_STATIC": "ON",
     },
     lib_source = "@mysql-connector-cpp//:all_srcs",
-    out_static_libs = [
+    # out_static_libs = [
+    #     "libmysqlcppconnx-static.a",
+    # ],
+    # out_lib_dir = "lib64",
+    static_libraries = [
         "libmysqlcppconnx-static.a",
     ],
-    out_lib_dir = "lib64",
     visibility = ["//visibility:public"],
 )
