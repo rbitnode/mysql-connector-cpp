@@ -14,7 +14,7 @@ bazel_dep(name = "mysql-connector-cpp-bazel", version = "1.0")
 git_override(
     module_name = "mysql-connector-cpp-bazel",
     remote = "https://github.com/rbitnode/mysql-connector-cpp-bazel.git",
-    commit = "861bcd48be1ebfd86f99c6e82ef0d92092bdcdab"
+    commit = "f31148b463a339afac60ec58f791897070fe4e5e"
 )
 ```
 and then you can reference library in deps part of your targets, like below:
